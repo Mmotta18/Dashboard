@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+       .grafico{
+          margin: auto;
+          width: 50%;
+       }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+    <div id="grafico">
+    <canvas id="grafico1"></canvas> 
+    </div>
+    <script>
+    function criaGrafico(idGrafico, dados, cor){
+    var ctx = document.getElementById(idGrafico).getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'radar',
+
+    // The data for our dataset
+    data: {
+        labels: dados['rótulo horizontal'],
+        datasets: [{
+            label: dados['indicador'],
+            backgroundColor: cor,
+            borderColor: cor,
+            data: dados["dados"]
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+       title:{
+          display: true,
+          text: 'Satisfação por área, de 1 a 10'
+       },
+    
+       scale:{
+          ticks:{
+              beginAtZero: true
+          }
+       }
+    }
+});
+}
+
+var dadosGrafico1 = {
+    "indicador": "Nota",
+    "rótulo horizontal": ['Durabilidade', 'Preço', 'Frete', 'Qualidade', 'Desempenho', 'Confiabilidade'],
+    "dados":[9, 6, 8, 10, 8, 7]
+}
+criaGrafico("grafico1", dadosGrafico1, 'rgba(255, 0, 0, 0.4)')
+    </script>
+</body>
+</html>
