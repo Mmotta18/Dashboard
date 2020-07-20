@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+       .grafico{
+          margin: auto;
+          width: 50%;
+       }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+    <div id="grafico">
+    <canvas id="grafico1"></canvas> 
+    </div>
+    <script>
+    function criaGrafico(idGrafico, dados, cor){
+    var ctx = document.getElementById(idGrafico).getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'radar',
+
+    // The data for our dataset
+    data: {
+        labels: dados['rótulo horizontal'],
+        datasets: [{
+            label: dados['indicador'],
+            backgroundColor: cor,
+            borderColor: cor,
+            data: dados["dados"]
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+       title:{
+          display: true,
+          text: 'Satisfação por área, de 1 a 10'
+       },
+    
+       scale:{
+          ticks:{
+              beginAtZero: true
+          }
+       }
+    }
+});
+}
+
+var dadosGrafico1 = {
+    "indicador": "Nota",
+    "rótulo horizontal": ['Durabilidade', 'Preço', 'Frete', 'Qualidade', 'Desempenho', 'Confiabilidade'],
+    "dados":[9, 6, 8, 10, 8, 7]
+}
+criaGrafico("grafico1", dadosGrafico1, 'rgba(255, 0, 0, 0.4)')
+    </script>
+    <hr>
+	<div id="grafico">
+		<canvas class="line-chart"></canvas>
+    </div>
+	<script src= "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+	<script>
+		var ctx = document.getElementsByClassName("line-chart")[0];
+
+		//Type, Data e Options
+		var chartGraph = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],
+				datasets: [
+				{
+
+					label: "Vendas de Imóveis - 2018",
+					data: [2713,4189,2683,1923,2405,3282,6789,3584,4702,4317,4023,5977,6980],
+					borderWidth: 6,
+					borderColor: 'rgba(77,166,253,0.85)',
+					backgroundColor: 'transparent',
+				},
+
+				{
+					label: "Vendas de Imóveis - 2019",
+					data: [5300,5200,4800,5000,3300,3700,3900,4100,4400,4700,4900,4500,3950,2850],
+					borderWidth: 6,
+					borderColor: 'rgba(255,0,0,0.85)',
+					backgroundColor: 'transparent',
+				},
+
+				
+				]
+			},
+			options: {
+				title: {
+					display: true,
+					fontSize: 20,
+					text: "Unidades Residenciais Vendidas"
+				},
+				labels: {
+					fontStyle: "bold",
+				}
+			}
+		});
+
+	</script>
+    <hr>
+    <div id="grafico">
+    <canvas id="grafico3"></canvas>
+    </div>
+    <div id="grafico">
+    <canvas id="grafico4"></canvas>
+    </div>
+    <div id="grafico">
+    <canvas id="grafico5"></canvas>
+    </div>
+    <div id="grafico">
+    <canvas id="grafico6"></canvas>
+    </div>
+    <div id="grafico">
+    <canvas id="grafico7"></canvas>
+    </div>
+    <div id="grafico">
+    <canvas id="grafico8"></canvas>
+    </div>
+    <script>
+    function criaGrafico(idGrafico, dados, cor){
+    var ctx = document.getElementById(idGrafico).getContext('2d');
+ var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: dados["Rótulox"],
+        datasets: [{
+            label: dados["indicador"],
+            backgroundColor: cor,
+            borderColor: cor,
+            data: dados["dados"]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+ });
+}
+
+var dadosGrafico3 = {
+    "indicador": "Vendas por milhão: Samsung",
+    "Rótulox": ['jan', 'fev', 'mar', 'abr', 'mai', 'jun'],
+    "dados":[6, 5.6, 5.4, 5.6, 6.2, 6.7]
+}
+criaGrafico("grafico3", dadosGrafico3, 'rgb(0, 204, 0)') 
+
+var dadosGrafico4 = {
+    "indicador": "Vendas por milhão: Motorola",
+    "Rótulox": ['jan', 'fev', 'mar', 'abr', 'mai', 'jun'],
+    "dados":[3.1, 3.2, 3.5, 3.1, 3.3, 3.8, 4]
+}
+criaGrafico("grafico4", dadosGrafico4, 'rgb(255, 0, 0)')
+
+var dadosGrafico5 = {
+    "indicador": "Vendas por milhão: Apple",
+    "Rótulox": ['jan', 'fev', 'mar', 'abr', 'mai', 'jun'],
+    "dados":[4, 3.6, 3.5, 4.1, 3.7, 3.3]
+}
+criaGrafico("grafico5", dadosGrafico5, 'rgb(0, 255, 255)')
+
+var dadosGrafico6 = {
+    "indicador": "Vendas por milhão:  Asus",
+    "Rótulox": ['jan', 'fev', 'mar', 'abr', 'mai', 'jun'],
+    "dados":[2.5, 2.2, 2, 2.1, 1.9, 2.1]
+}
+criaGrafico("grafico6", dadosGrafico6, 'rgb(100, 0, 100)')
+
+var dadosGrafico7 = {
+    "indicador": "Vendas por milhão: LG",
+    "Rótulox": ['jan', 'fev', 'mar', 'abr', 'mai', 'jun'],
+    "dados":[1.8, 2, 2.2, 1.8, 1.5, 2]
+}
+criaGrafico("grafico7", dadosGrafico7, 'rgb(0, 100, 100)')
+
+var dadosGrafico8 = {
+    "indicador": "Vendas por milhão: Xiaomi",
+    "Rótulox": ['jan', 'fev', 'mar', 'abr', 'mai', 'jun'],
+    "dados":[3.1, 3.3, 3.5, 3.6, 3.8, 4.2]
+}
+criaGrafico("grafico8", dadosGrafico8, 'rgb(200, 100, 0)')
+    </script>
+    <hr>
+    <figure id="grafico">
+        <canvas id="grafico9"></canvas>
+    </figure>
+    <figure id="grafico">
+        <canvas id="grafico10"></canvas>
+    </figure>
+    <figure id="grafico">
+        <canvas id="grafico11"></canvas>
+    </figure>
+   
+    <script>
+    function criaGrafico(idGrafico, dados, cor){
+    var ctx = document.getElementById(idGrafico).getContext('2d');
+ var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: dados["Rótulox"],
+        datasets: [{
+            label: dados["indicador"],
+            backgroundColor: cor,
+            borderColor: cor,
+            data: dados["dados"]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+ });
+}
+
+var dadosGrafico9 = {
+    "indicador": "GTA 5 (em milhões)",
+    "Rótulox": ['2014', '2015', '2016', '2017', '2018', '2019', '2020...'],
+    "dados":[23, 21, 25, 19, 25, 35, 34]
+}
+
+criaGrafico("grafico9", dadosGrafico9, 'rgb(0, 204, 0)') 
+
+var dadosGrafico10 = {
+    "indicador": "The last of us (em milhões)",
+    "Rótulox": ['2014', '2015', '2016', '2017', '2018', '2019', '2020...'],
+    "dados":[14, 17, 23, 31, 15, 19, 22]
+}
+criaGrafico("grafico10", dadosGrafico10, 'rgb(255, 0, 0)')
+
+var dadosGrafico11 = {
+    "indicador": "FIFA (em milhões)",
+    "Rótulox": ['2014', '2015', '2016', '2017', '2018', '2019', '2020'],
+    "dados":[13, 16, 24, 25, 31, 28, 25]
+}
+criaGrafico("grafico11", dadosGrafico11, 'rgb(0, 255, 255)')
+
+</script>
+
+</body>
+</html>
